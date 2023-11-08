@@ -7,13 +7,7 @@ export const env = createEnv({
    * isn't built with invalid env vars.
    */
   server: {
-    DATABASE_URL: z
-      .string()
-      .url()
-      .refine(
-        (str) => !str.includes("eu-central-1.postgres.vercel-storage.com"),
-        "You forgot to change the default URL",
-      ),
+    DATABASE_URL: z.string().url(),
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
