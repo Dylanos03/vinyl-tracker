@@ -26,8 +26,6 @@ export const tunesRouter = createTRPCRouter({
     }),
 
   getAll: publicProcedure.query(({ ctx }) => {
-    return ctx.db.tune.findMany({
-      orderBy: { id: "asc" },
-    });
+    return ctx.db.tune.findMany();
   }),
 });
