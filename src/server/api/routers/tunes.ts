@@ -3,14 +3,6 @@ import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 export const tunesRouter = createTRPCRouter({
-  hello: publicProcedure
-    .input(z.object({ text: z.string() }))
-    .query(({ input }) => {
-      return {
-        greeting: `Hello ${input.text}`,
-      };
-    }),
-
   create: publicProcedure
     .input(z.object({ name: z.string().min(1) }))
     .mutation(async ({ ctx, input }) => {
@@ -24,7 +16,10 @@ export const tunesRouter = createTRPCRouter({
       });
     }),
 
-  getAll: publicProcedure.query(({ ctx }) => {
-    return ctx.db.tune.findMany({ orderBy: { id: "asc" } });
+  getAll: publicProcedure.query(({ ctx, input }) => {
+    return ctx.db.tune.findMany({
+      orderBy: { id: "asc" },
+      where: { tuneName: input },
+    });
   }),
 });

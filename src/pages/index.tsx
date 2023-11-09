@@ -1,11 +1,12 @@
-import { FormEvent, useState } from "react";
+import { useState } from "react";
+import type { FormEvent } from "react";
 import TuneCard from "~/components/tuneCard";
 
 import { api } from "~/utils/api";
 
 export default function Home() {
   const [name, setName] = useState("");
-  const hello = api.post.hello.useQuery({ text: "from tRPC" });
+
   const tunes = api.tunes.getAll.useQuery();
   const { mutate } = api.post.create.useMutation();
 
@@ -22,8 +23,8 @@ export default function Home() {
           Your Collection
         </h1>
         <div className="flex">
-          {tunes.data?.map((item) => {
-            return <TuneCard {...item} />;
+          {tunes.data?.map((item, index) => {
+            return <TuneCard key={index} {...item} />;
           })}
         </div>
 
