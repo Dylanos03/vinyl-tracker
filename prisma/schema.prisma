@@ -23,6 +23,7 @@ model tune {
     id         Int    @id @default(autoincrement())
     tuneName   String
     tuneArtist String
+    genre      String
     bpm        Int
     tuneKey    String
 }

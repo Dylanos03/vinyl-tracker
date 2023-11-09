@@ -4,14 +4,23 @@ import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 export const tunesRouter = createTRPCRouter({
   create: publicProcedure
-    .input(z.object({ name: z.string().min(1) }))
+    .input(
+      z.object({
+        tuneName: z.string().min(1),
+        tuneArtist: z.string().min(1),
+        genre: z.string().min(1),
+        bpm: z.number().min(2),
+        tuneKey: z.string().min(1),
+      }),
+    )
     .mutation(async ({ ctx, input }) => {
-      // simulate a slow db call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      return ctx.db.post.create({
+      return ctx.db.tune.create({
         data: {
-          name: input.name,
+          tuneName: input.tuneName,
+          tuneArtist: input.tuneArtist,
+          genre: input.genre,
+          bpm: input.bpm,
+          tuneKey: input.tuneKey,
         },
       });
     }),
@@ -19,7 +28,6 @@ export const tunesRouter = createTRPCRouter({
   getAll: publicProcedure.query(({ ctx, input }) => {
     return ctx.db.tune.findMany({
       orderBy: { id: "asc" },
-      where: { tuneName: input },
     });
   }),
 });

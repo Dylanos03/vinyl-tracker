@@ -8,7 +8,8 @@ function TuneCard(props: tune) {
         {props.tuneName} -{" "}
         <span className="font-normal">{props.tuneArtist}</span>
       </h3>
-      <div>
+      <h3>Genre: {props.genre}</h3>
+      <div className="flex justify-between">
         <h3>BPM: {props.bpm}</h3>
         <h3>Key: {props.tuneKey}</h3>
       </div>
