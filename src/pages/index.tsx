@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { useState } from "react";
-import type { FormEvent } from "react";
 import TuneCard from "~/components/tuneCard";
 
 import { api } from "~/utils/api";
