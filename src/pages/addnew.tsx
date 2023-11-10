@@ -28,7 +28,7 @@ function AddNew() {
   return (
     <main className="flex min-h-screen flex-col items-center bg-zinc-900 p-12 text-white">
       <h1 className="flex justify-center text-3xl font-bold ">Add New</h1>
-      <div className="flex flex-col gap-3">
+      <div className="flex w-full max-w-6xl flex-col gap-3">
         <div className="flex flex-col">
           <label>Song Name</label>
           <input

@@ -14,7 +14,7 @@ export default function Home() {
         </h1>
         <Link
           href={"/addnew"}
-          className=" absolute right-12 top-12 bg-white px-2 py-1"
+          className=" absolute right-12 top-10 rounded-md bg-white px-2 py-1 outline-none"
         >
           Add New +
         </Link>
