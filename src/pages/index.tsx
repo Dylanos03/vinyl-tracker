@@ -4,7 +4,7 @@ import TuneCard from "~/components/tuneCard";
 import { api } from "~/utils/api";
 
 export default function Home() {
-  const tunes = api.tunes.getAll.useQuery();
+  const { data } = api.tunes.getAll.useQuery();
 
   return (
     <>
@@ -19,7 +19,7 @@ export default function Home() {
           Add New +
         </Link>
         <div className="flex flex-wrap gap-4">
-          {tunes.data?.map((item, index) => {
+          {data?.map((item, index) => {
             return <TuneCard key={index} {...item} />;
           })}
         </div>
