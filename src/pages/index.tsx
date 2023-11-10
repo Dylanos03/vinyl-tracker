@@ -1,10 +1,11 @@
 import Link from "next/link";
+import LoadingSpinner from "~/components/loadingSpinner";
 import TuneCard from "~/components/tuneCard";
 
 import { api } from "~/utils/api";
 
 export default function Home() {
-  const { data } = api.tunes.getAll.useQuery();
+  const { data, isLoading } = api.tunes.getAll.useQuery();
 
   return (
     <>
@@ -18,7 +19,12 @@ export default function Home() {
         >
           Add New +
         </Link>
-        <div className="flex flex-wrap gap-4">
+        {isLoading && (
+          <div className="flex items-center justify-center">
+            <LoadingSpinner />
+          </div>
+        )}
+        <div className="flex flex-wrap justify-center gap-4">
           {data?.map((item, index) => {
             return <TuneCard key={index} {...item} />;
           })}
