@@ -11,7 +11,7 @@ export default function Home() {
   const [search, setSearch] = useState("");
   const [genre, setGenre] = useState("");
   const tunes = api.tunes.getSome.useQuery(search);
-  let distinctGenres = [...new Set(tunes.data?.map((i) => i.genre))];
+  const distinctGenres = [...new Set(tunes.data?.map((i) => i.genre))];
 
   return (
     <>
