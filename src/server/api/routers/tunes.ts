@@ -29,6 +29,12 @@ export const tunesRouter = createTRPCRouter({
     return ctx.db.tune.findMany();
   }),
 
+  getSome: publicProcedure.input(z.string()).query(({ ctx, input }) => {
+    return ctx.db.tune.findMany({
+      where: { tuneName: { contains: input, mode: "insensitive" } },
+    });
+  }),
+
   delete: publicProcedure
     .input(z.object({ id: z.number() }))
     .mutation(async ({ ctx, input }) => {

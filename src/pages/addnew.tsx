@@ -32,7 +32,7 @@ function AddNew() {
         <div className="flex flex-col">
           <label>Song Name</label>
           <input
-            className="text-zinc-900"
+            className="rounded-lg px-4 py-2 text-zinc-900"
             type="text"
             value={songName}
             onChange={(e) => {
@@ -43,7 +43,7 @@ function AddNew() {
         <div className="flex flex-col">
           <label>Song Artist</label>
           <input
-            className="text-zinc-900"
+            className="rounded-lg px-4 py-2 text-zinc-900"
             type="text"
             value={artist}
             onChange={(e) => {
@@ -54,7 +54,7 @@ function AddNew() {
         <div className="flex flex-col">
           <label>Genre</label>
           <input
-            className="text-zinc-900"
+            className="rounded-lg px-4 py-2 text-zinc-900"
             type="text"
             value={songGenre}
             onChange={(e) => {
@@ -65,7 +65,7 @@ function AddNew() {
         <div className="flex flex-col">
           <label>BPM</label>
           <input
-            className="text-zinc-900"
+            className="rounded-lg px-4 py-2 text-zinc-900"
             type="number"
             value={bpm}
             onChange={(e) => {
@@ -76,7 +76,7 @@ function AddNew() {
         <div className="flex flex-col">
           <label>Key</label>
           <input
-            className="text-zinc-900"
+            className="rounded-lg px-4 py-2 text-zinc-900"
             type="text"
             value={songKey}
             onChange={(e) => {
@@ -84,7 +84,12 @@ function AddNew() {
             }}
           />
         </div>
-        <button onClick={handleSubmit}>Add</button>
+        <button
+          className="rounded-lg border-2 border-white"
+          onClick={handleSubmit}
+        >
+          Add
+        </button>
       </div>
     </main>
   );
